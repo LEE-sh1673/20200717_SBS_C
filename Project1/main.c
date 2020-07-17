@@ -1,56 +1,41 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
+typedef enum weapon {
+	SWORD = 0x00000001,
+	AXE = 0x00000002,
+	GUN = 0x00000004,
+	BOW = 0x00000008,
+	STAFF = 0x00000010,
+}weapon;
+
 int main(void)
 {
-	int a;
-	int b;
-	int c;
+	// ¹«±â ÀåÂø
+	weapon weapons = SWORD | AXE | GUN;
 
-	fputs("Enter the numbers: ", stdout);
-	scanf("%d %d %d", &a, &b, &c);
+	// ¹«±â ÇØÁ¦
+	weapons &= ~AXE;
 
-	printf("Sequences: ");
-
-	if (a > b)
+	if (weapons & SWORD)
 	{
-		if (a > c) 
-		{
-			printf("%d, ", a);
-
-			if (c > b)
-			{
-				printf("%d, %d\n", c, b);
-			}
-			else
-			{
-				printf("%d, %d\n", b, c);
-			}
-		}
-		else 
-		{
-			printf("%d, %d, %d\n", c, a, b);
-		}
+		printf("SWORD ÀåÂø");
 	}
-	else 
+	if (weapons & AXE)
 	{
-		if (b > c) 
-		{
-			printf("%d, ", b);
-
-			if (a > c)
-			{
-				printf("%d, %d\n", a, c);
-			}
-			else
-			{
-				printf("%d, %d\n", c, a);
-			}
-		}
-		else 
-		{
-			printf("%d, %d, %d\n", c, b, a);
-		}
+		printf("AXE ÀåÂø");
+	}
+	if (weapons & GUN)
+	{
+		printf("GUN ÀåÂø");
+	}
+	if (weapons & BOW)
+	{
+		printf("BOW ÀåÂø");
+	}
+	if (weapons & STAFF)
+	{
+		printf("STAFF ÀåÂø");
 	}
 
 	return 0;
